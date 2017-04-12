@@ -1,0 +1,95 @@
+<launch>
+
+<!--  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="1" /></include>
+  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="2" /></include>
+  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="3" /></include>
+  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="4" /></include>-->
+  
+  <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="1" /></include>
+   <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="2" /></include> -->
+<!--   <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="3" /></include> -->
+<!--   <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="4" /></include>  -->
+  
+  
+  <node pkg="tf" type="static_transform_publisher" name="tf_world" args="0 0 0 0 0 0 world map 50" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_odom" args="0 0 0 0 0 0 map odom 50" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_cam1" args="0.926471 0.998127 3.80908 0.999948 -0.000610155 0.0100664 -0.00116429 odom cam1 50" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_cam2" args="-1.11753 0.953969 3.85658 0.99974 -0.00253604 -0.0200204 -0.0105956 odom cam2 50" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_cam3" args="-1.32182 -1.1788 3.62416 0.999997 0.00036887 0.00206406 0.00116467 odom cam3 50" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_cam4" args="-0.842545 1.35542 3.7464 0.918062 -0.00312821 0.219655 0.330007 odom cam4 50" />
+  
+  
+  
+<?ignore
+# Generated with
+prefix='<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="'
+sufix='" /></include>'
+for i in $(seq 0 63); do echo ${prefix}${i}${sufix};done
+?>
+  
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="0" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="1" /></include>
+<!--<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="2" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="3" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="4" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="5" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="6" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="7" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="8" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="9" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="10" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="11" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="12" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="13" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="14" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="15" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="16" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="17" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="18" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="19" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="20" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="21" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="22" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="23" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="24" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="25" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="26" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="27" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="28" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="29" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="30" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="31" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="32" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="33" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="34" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="35" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="36" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="37" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="38" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="39" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="40" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="41" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="42" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="43" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="44" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="45" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="46" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="47" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="48" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="49" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="50" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="51" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="52" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="53" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="54" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="55" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="56" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="57" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="58" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="59" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="60" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="61" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="62" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="63" /></include>-->
+
+</launch>
