@@ -1,19 +1,13 @@
 <launch>
 
   <!--START THE CAMERAS-->
-  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="1" /></include>
-  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="2" /></include>
-  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="3" /></include>
-  <include file="$(find sense)/launch/example.launch"><arg name="CAM" value="4" /></include>
+  <include file="$(find sense)/launch/twb_camera.launch"/>
   
   <!--START THE TRACKING-->
-  <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="1" /></include>
-  <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="2" /></include>
-  <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="3" /></include>
-  <include file="$(find tracker_artoolkit5)/launch/example.launch"><arg name="CAM" value="4" /></include>  
+  <include file="$(find tracker_artoolkit5)/launch/twb_tracker.launch"/>
   
   <!--TFs FOR CAMERAS-->
-  <include file="$(find calib)/launch/camera_tf.launch"/>
+  <include file="$(find calib)/launch/twb_camera_tf.launch"/>
   
   
 <?ignore
