@@ -1,13 +1,14 @@
+<?xml version="1.0"?>
 <launch>
 
   <!--START THE CAMERAS-->
-  <include file="$(find sense)/launch/twb_camera.launch"/>
+<!--   <include file="$(find sense)/launch/twb_camera.launch"/> -->
   
   <!--START THE TRACKING-->
-  <include file="$(find tracker_artoolkit5)/launch/twb_tracker.launch"/>
+<!--   <include file="$(find tracker_artoolkit5)/launch/twb_tracker.launch"/> -->
   
   <!--TFs FOR CAMERAS-->
-  <include file="$(find calib)/launch/twb_camera_tf.launch"/>
+<!--   <include file="$(find calib)/launch/twb_camera_tf.launch"/> -->
   
   
 <?ignore
@@ -17,19 +18,18 @@ sufix='" /></include>'
 for i in $(seq 0 63); do echo ${prefix}${i}${sufix};done
 ?>
 
-
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="0" /></include>
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="1" /></include>
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="2" /></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="3" /></include>  -->
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="2" /></include> 
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="3" /></include> 
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="4" /></include>  -->
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="5" /></include>  -->
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="6" /></include>  -->
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="7" /></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="8" /></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="9" /></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="10" /></include> -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="11" /></include> -->
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="8" /></include> 
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="9" /></include> 
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="10" /></include>
+<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="11" /></include>
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="12" /></include> -->
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="13" /></include> -->
 <!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="14" /></include> -->
