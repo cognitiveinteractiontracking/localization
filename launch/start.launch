@@ -25,10 +25,10 @@ for i in $(seq 0 63); do echo ${prefix}${i}${sufix};done
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="1" /><arg name="tracker" value="$(arg tracker)"/></include>
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="2" /><arg name="tracker" value="$(arg tracker)"/></include> 
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="3" /><arg name="tracker" value="$(arg tracker)"/></include> 
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="4" /><arg name="tracker" value="$(arg tracker)"/></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="5" /><arg name="tracker" value="$(arg tracker)"/></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="6" /><arg name="tracker" value="$(arg tracker)"/></include>  -->
-<!-- <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="7" /><arg name="tracker" value="$(arg tracker)"/></include>  -->
+ <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="4" /><arg name="tracker" value="$(arg tracker)"/></include>
+ <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="5" /><arg name="tracker" value="$(arg tracker)"/></include>
+ <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="6" /><arg name="tracker" value="$(arg tracker)"/></include>
+ <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="7" /><arg name="tracker" value="$(arg tracker)"/></include>
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="8" /><arg name="tracker" value="$(arg tracker)"/></include> 
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="9" /><arg name="tracker" value="$(arg tracker)"/></include> 
 <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="10" /><arg name="tracker" value="$(arg tracker)"/></include>

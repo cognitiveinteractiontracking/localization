@@ -1,134 +1,66 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="id" default="0"/>
-  <arg name="tracker" default="artoolkit5"/>
+  <arg name="id" default="5"/>
+  <arg name="input0" default="/aruco3_node1_2/cam/odom/5"/>
+  <arg name="input1" default="/aruco3_node1_2/cam/odom/5"/>
+  <arg name="input2" default="/aruco3_node1_2/cam/odom/5"/>
+  <arg name="input3" default="/aruco3_node1_2/cam/odom/5"/>
+  <arg name="output" default="/odom/filtered/5"/>
 
-  <arg name="pose_rejection_threshold" default="2"/>
-  <arg name="two_d_mode" default="true"/>
-
-  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_wheel_odometry_$(arg id)" output="screen" >
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_wheel_odometry_$(arg id)_filtered" output="screen" >
 
     <!-- Frequency of the main run loop. -->
-    <param name="frequency" value="20"/>
+    <param name="frequency" value="30"/>
 
     <!-- Should be inverse of minimum frequency of the cameras FPS -->
     <param name="sensor_timeout" value="10000"/> <!--how long the sensor waits for data until prediction. Higher value means less prediction. If there is no sensor data the last position will be published until prediction.-->
-
-    <!--<param name="debug" value="true"/>-->
-    <!--<param name="debug_out_file" value="/mnt/filedump1/twb_demo_ekf/ekf_debug.txt"/>-->
 
     <param name="map_frame" value="map"/>
     <param name="odom_frame" value="world"/>
     <param name="base_link_frame" value="base_link_$(arg id)/base_link"/>
     <param name="world_frame" value="world"/>
-    <param name="two_d_mode" value="$(arg two_d_mode)"/>
+    <param name="two_d_mode" value="true"/>
     <param name="dynamic_process_noise_covariance" value="false"/>
 
-    <remap from="odometry/filtered" to="odometry/filtered/$(arg id)"/>
+    <remap from="odometry/filtered" to="$(arg output)"/>
 
 
-    <param name="odom0" value="/$(arg tracker)1_2/cam/odom/$(arg id)"/>
+    <param name="odom0" value="$(arg input0)"/>
     <rosparam param="odom0_config">[true,  true,  true,
-                                    true,  true,  true,
+                                    true, true, true,
                                     false, false, false,
                                     false, false, false,
                                     false, false, false]</rosparam>
     <param name="odom0_differential" value="false"/>
     <param name="odom0_relative" value="false"/>
-    <param name="odom0_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
 
-    <param name="odom1" value="/$(arg tracker)2_2/cam/odom/$(arg id)"/>
+    <param name="odom1" value="$(arg input1)"/>
     <rosparam param="odom1_config">[true,  true,  true,
-      true,  true,  true,
-      false, false, false,
-      false, false, false,
-      false, false, false]</rosparam>
+                                    true, true, true,
+                                    false, false, false,
+                                    false, false, false,
+                                    false, false, false]</rosparam>
     <param name="odom1_differential" value="false"/>
     <param name="odom1_relative" value="false"/>
-    <param name="odom1_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
 
-    <param name="odom2" value="/$(arg tracker)3_2/cam/odom/$(arg id)"/>
+    <param name="odom2" value="$(arg input2)"/>
     <rosparam param="odom2_config">[true,  true,  true,
-                                    true,  true,  true,
+                                    true, true, true,
                                     false, false, false,
                                     false, false, false,
                                     false, false, false]</rosparam>
     <param name="odom2_differential" value="false"/>
     <param name="odom2_relative" value="false"/>
-    <param name="odom2_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
 
-    <param name="odom3" value="/$(arg tracker)4_2/cam/odom/$(arg id)"/>
+    <param name="odom3" value="$(arg input3)"/>
     <rosparam param="odom3_config">[true,  true,  true,
-                                    true,  true,  true,
+                                    true, true, true,
                                     false, false, false,
                                     false, false, false,
                                     false, false, false]</rosparam>
     <param name="odom3_differential" value="false"/>
     <param name="odom3_relative" value="false"/>
-    <param name="odom3_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
-
-    <param name="odom4" value="/$(arg tracker)5_2/cam/odom/$(arg id)"/>
-    <rosparam param="odom4_config">[true,  true,  true,
-                                    true,  true,  true,
-                                    false, false, false,
-                                    false, false, false,
-                                    false, false, false]</rosparam>
-    <param name="odom4_differential" value="false"/>
-    <param name="odom4_relative" value="false"/>
-    <param name="odom4_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
-
-
-    <param name="odom5" value="/$(arg tracker)5_2/cam/odom/$(arg id)"/>
-    <rosparam param="odom5_config">[true, true,  true,
-                                   true,  true,  true,
-                                   false, false, false,
-                                   false, false, false,
-                                   false, false, false]</rosparam>
-    <param name="odom5_differential" value="false"/>
-    <param name="odom5_relative" value="false"/>
-    <param name="odom5_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
-
-<!--    <param name="odom5" value="/$(arg tracker)_cam1/cam/odom/$(arg id)"/>
-    <rosparam param="odom5_config">[true,  true,  true,
-                                    true,  true,  true,
-                                    false, false, false,
-                                    false, false, false,
-                                    false, false, false]</rosparam>
-    <param name="odom5_differential" value="false"/>
-    <param name="odom5_relative" value="false"/>
-    <param name="odom5_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
-
-
-    <param name="odom6" value="/$(arg tracker)_cam2/cam/odom/$(arg id)"/>
-    <rosparam param="odom6_config">[true,  true,  true,
-                                    true,  true,  true,
-                                    false, false, false,
-                                    false, false, false,
-                                    false, false, false]</rosparam>
-    <param name="odom6_differential" value="false"/>
-    <param name="odom6_relative" value="false"/>
-    <param name="odom6_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
-
-    <param name="odom7" value="/$(arg tracker)_cam3/cam/odom/$(arg id)"/>
-    <rosparam param="odom7_config">[true,  true,  true,
-                                    true,  true,  true,
-                                    false, false, false,
-                                    false, false, false,
-                                    false, false, false]</rosparam>
-    <param name="odom7_differential" value="false"/>
-    <param name="odom7_relative" value="false"/>
-    <param name="odom7_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>
-
-    <param name="odom8" value="/$(arg tracker)/cam/odom/$(arg id)"/>
-    <rosparam param="odom8_config">[true,  true,  true,
-                                    true,  true,  true,
-                                    false, false, false,
-                                    false, false, false,
-                                    false, false, false]</rosparam>
-    <param name="odom8_differential" value="false"/>
-    <param name="odom8_relative" value="false"/>
-    <param name="odom8_pose_rejection_threshold" value="$(arg pose_rejection_threshold)"/>-->
 
     <!--[ADVANCED] The process noise covariance matrix can be difficult to tune, and can vary for each application, so it is-->
     <!--exposed as a configuration parameter. This matrix represents the noise we add to the total error after each-->
