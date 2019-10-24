@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="id" default="0"/>
-  <arg name="tracker_node" default="aruco3_node1_2_awdawdwa"/>
+  <arg name="tracker_node" default="aruco3_node1_2"/>
   <arg name="output" default="/$(arg tracker_node)/cam/odom/$(arg id)/filtered"/>
 
   <node pkg="robot_localization" type="ekf_localization_node" name="ekf_wheel_odometry_$(arg tracker_node)_$(arg id)" output="screen">

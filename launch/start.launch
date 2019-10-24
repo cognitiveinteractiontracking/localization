@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <launch>
+    
+  <param name="capability_group" value="localization"/>
 
   <!--<arg name="tracker" default="artoolkit5"/>-->
   <arg name="tracker" default="aruco3_node"/>

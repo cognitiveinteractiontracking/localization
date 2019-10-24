@@ -2,18 +2,19 @@
 <launch>
 
   <arg name="id" default="0"/>
-  <arg name="tracker" default="artoolkit5"/>
+  <arg name="tracker" default="aruco3_node"/>
 
   <arg name="pose_rejection_threshold" default="2"/>
   <arg name="two_d_mode" default="true"/>
+  <arg name="frequency" default="10"/>
 
-  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_wheel_odometry_$(arg id)" output="screen" >
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_wheel_odometry_$(arg id)" output="screen" respawn="true">
 
     <!-- Frequency of the main run loop. -->
-    <param name="frequency" value="20"/>
+    <param name="frequency" value="$(arg frequency)"/>
 
     <!-- Should be inverse of minimum frequency of the cameras FPS -->
-    <param name="sensor_timeout" value="10000"/> <!--how long the sensor waits for data until prediction. Higher value means less prediction. If there is no sensor data the last position will be published until prediction.-->
+    <param name="sensor_timeout" value="360000"/> <!--how long the sensor waits for data until prediction. Higher value means less prediction. If there is no sensor data the last position will be published until prediction.-->
 
     <!--<param name="debug" value="true"/>-->
     <!--<param name="debug_out_file" value="/mnt/filedump1/twb_demo_ekf/ekf_debug.txt"/>-->
