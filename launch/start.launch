@@ -2,14 +2,13 @@
 <launch>
     
   <param name="capability_group" value="localization"/>
-  
-<?ignore
-# Generated with
-prefix='<include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="'
-sufix='" /><arg name="tracker" value="$(arg tracker)"/></include>'
-for i in $(seq 0 63); do echo ${prefix}${i}${sufix};done
-?>
 
+  <!-- If ARToolkit5 is used for tracking -->
+  <!--arg name="tracker" default="artoolkit5"/-->
+
+  <!-- If aruco3 is used for tracking -->
+  <arg name="tracker" default="aruco3_node"/>
+  
   <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="0" /><arg name="tracker" value="$(arg tracker)"/></include>
   <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="1" /><arg name="tracker" value="$(arg tracker)"/></include>
   <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="2" /><arg name="tracker" value="$(arg tracker)"/></include>
