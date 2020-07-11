@@ -3,10 +3,7 @@
     
   <param name="capability_group" value="localization"/>
 
-  <!-- If ARToolkit5 is used for tracking -->
-  <!--arg name="tracker" default="artoolkit5"/-->
-
-  <!-- If aruco3 is used for tracking -->
+  <!-- Can be 'artoolkit5', 'aruco2_node', or 'aruco3_node' -->
   <arg name="tracker" default="aruco3_node"/>
   
   <include file="$(find localization)/launch/generic_ekf.launch"><arg name="id" value="0" /><arg name="tracker" value="$(arg tracker)"/></include>
